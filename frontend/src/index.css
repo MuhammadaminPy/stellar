@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables: Dark theme (default) ─── */
+:root,
+.theme-dark {
+  --bg: #0d0f14;
+  --surface: #161920;
+  --card: #1e2230;
+  --border: #2a2f42;
+  --accent: #4f8ef7;
+  --gold: #f5c542;
+  --green: #3dd68c;
+  --red: #f05454;
+  --text: #e8eaf0;
+  --muted: #7c82a0;
+  --tab-bar-bg: rgba(22, 25, 32, 0.96);
+}
+
+/* ─── Light theme ─── */
+.theme-light {
+  --bg: #f0f2f8;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: #d8dde8;
+  --accent: #3b79e0;
+  --gold: #c89b00;
+  --green: #1f9c66;
+  --red: #d63333;
+  --text: #1a1e2e;
+  --muted: #6b7490;
+  --tab-bar-bg: rgba(255, 255, 255, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-root {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── Tailwind Extensions via CSS vars ─── */
+.bg-df-bg       { background-color: var(--bg) }
+.bg-df-surface  { background-color: var(--surface) }
+.bg-df-card     { background-color: var(--card) }
+.border-df-border { border-color: var(--border) }
+.text-df-text   { color: var(--text) }
+.text-df-muted  { color: var(--muted) }
+.text-df-accent { color: var(--accent) }
+.text-df-gold   { color: var(--gold) }
+.text-df-green  { color: var(--green) }
+.text-df-red    { color: var(--red) }
+.bg-df-accent   { background-color: var(--accent) }
+.bg-df-gold     { background-color: var(--gold) }
+.bg-df-green    { background-color: var(--green) }
+.bg-df-red      { background-color: var(--red) }
+
+/* ─── Utility Components ─── */
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.15s ease;
+}
+.btn-primary:hover { opacity: 0.88 }
+.btn-primary:active { opacity: 0.75 }
+
+.stat-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, var(--gold), #d4961e);
+  color: #1a1200;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.tab-bar-bg {
+  background: var(--tab-bar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.animate-fade-in { animation: fadeIn 0.2s ease both }
+
+/* ─── Safe area ─── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Theme transition ─── */
+body, .app-root, .card, .tab-bar-bg {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* ─── Input styles ─── */
+input, textarea {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--muted);
+}
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
